@@ -1,1 +1,1 @@
-# ny-times-spelling-bee
+## New York Times Spelling 
