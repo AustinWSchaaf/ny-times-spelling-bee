@@ -4,8 +4,7 @@ func loadFile(_ file: String)->[String]?{
     guard let path = Bundle.main.path(forResource: file, ofType: ".txt") else{
         return nil
     }
-    let words = try? String(contentsOfFile: path, encoding: .ascii).components(separatedBy: "\n")
-    return words
+    return try? String(contentsOfFile: path, encoding: .ascii).components(separatedBy: "\n")
 }
 
 let letters: Set<String> = ["m","t","i","o","p","l"]
