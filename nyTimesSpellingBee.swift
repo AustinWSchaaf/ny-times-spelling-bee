@@ -7,8 +7,18 @@ func loadFile(_ file: String)->[String]?{
     return try? String(contentsOfFile: path, encoding: .ascii).components(separatedBy: "\n")
 }
 
-let letters: Set<String> = ["m","t","i","o","p","l"]
-let words = loadFile("words_alpha")!.filter{ $0.count > 3 && $0.contains("a") ? letters.intersection(Set($0.map{String($0)})).count > 2 : false }
+let letters: Set<String.Element> = ["t","u","x","e","a","l","n","\r"]
+
+let words = loadFile("words_alpha")!.filter { (word) in
+    let set = Set(word)
+    if set.count > 4 && set.contains("n"){
+        for c in set{
+            if !letters.contains(c){ return false }
+        }
+        return true
+    }
+    return false
+}
 
 print(words.count)
 words.forEach{ print($0) }
