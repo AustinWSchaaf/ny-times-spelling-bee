@@ -11,13 +11,11 @@ let letters: Set<String.Element> = ["t","u","x","e","a","l","n","\r"]
 
 let words = loadFile("words_alpha")!.filter { (word) in
     let set = Set(word)
-    if set.count > 4 && set.contains("n"){
-        for c in set{
-            if !letters.contains(c){ return false }
-        }
-        return true
+    guard word.count > 4 && set.contains("n") else { return false }
+    for c in set{
+        if !letters.contains(c){ return false }
     }
-    return false
+    return true
 }
 
 print(words.count)
