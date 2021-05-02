@@ -1,1 +1,1 @@
-## New York Times Spelling 
+### New York Times Spelling Results
