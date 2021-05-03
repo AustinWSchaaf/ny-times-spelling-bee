@@ -9,7 +9,6 @@ func loadFile(_ file: String)->[String]?{
 
 let chars: Set<String.Element> = ["t","u","x","e","a","l","n","\r"]
 func valid(_ set: Set<String.Element>)->Bool{
-    var set = set
     return set.contains("n") && set.subtracting(chars).isEmpty
 }
 let words = loadFile("words_alpha")!.filter{ $0.count > 4 ? valid(Set($0)) : false }
