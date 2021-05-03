@@ -7,16 +7,12 @@ func loadFile(_ file: String)->[String]?{
     return try? String(contentsOfFile: path, encoding: .ascii).components(separatedBy: "\n")
 }
 
-let letters: Set<String.Element> = ["t","u","x","e","a","l","n","\r"]
-
-let words = loadFile("words_alpha")!.filter { (word) in
-    let set = Set(word)
-    guard word.count > 4 && set.contains("n") else { return false }
-    for c in set{
-        if !letters.contains(c){ return false }
-    }
-    return true
+let chars: Set<String.Element> = ["t","u","x","e","a","l","n","\r"]
+func valid(_ set: Set<String.Element>)->Bool{
+    var set = set
+    return set.contains("n") && set.subtracting(chars).isEmpty
 }
+let words = loadFile("words_alpha")!.filter{ $0.count > 4 ? valid(Set($0)) : false }
 
 print(words.count)
 words.forEach{ print($0) }
